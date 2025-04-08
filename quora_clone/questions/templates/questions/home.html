@@ -1,6 +1,12 @@
 {% extends 'questions/base.html' %}
 
+
+            
 {% block content %}
+    
+    {% if user.is_authenticated %}
+            <a class="nav-link" href="{% url 'ask_question' %}"><button>Ask a Question</button></a>
+    {% endif %}
     <h1>Recent Questions</h1>
     {% for question in questions %}
         <div class="card mb-3">
@@ -8,7 +14,7 @@
                 <h5 class="card-title">
                   Topic : {{ question.topic }} 
                 </h5>
-                <p class="card-text">{{ question.question|truncatewords:50 }}</p>
+                <p class="card-text">Question: {{ question.question|truncatewords:50 }}</p>
                 <small class="text-muted">Asked by {{ question.author.username }} on {{ question.created_at }}</small><br>
                 <a href="{% url 'question_detail' question.pk %}"><button> Answers</button></a>
             </div>

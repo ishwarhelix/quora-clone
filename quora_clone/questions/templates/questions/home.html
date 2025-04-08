@@ -6,10 +6,11 @@
         <div class="card mb-3">
             <div class="card-body">
                 <h5 class="card-title">
-                    <a href="{% url 'question_detail' question.pk %}">{{ question.title }}</a>
+                  Topic : {{ question.topic }} 
                 </h5>
-                <p class="card-text">{{ question.content|truncatewords:50 }}</p>
-                <small class="text-muted">Asked by {{ question.author.username }} on {{ question.created_at }}</small>
+                <p class="card-text">{{ question.question|truncatewords:50 }}</p>
+                <small class="text-muted">Asked by {{ question.author.username }} on {{ question.created_at }}</small><br>
+                <a href="{% url 'question_detail' question.pk %}"><button> Answers</button></a>
             </div>
         </div>
     {% endfor %}

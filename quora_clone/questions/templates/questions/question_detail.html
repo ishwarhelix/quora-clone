@@ -3,20 +3,22 @@
 {% block content %}
     <div class="card mb-4">
         <div class="card-body">
-            <h2 class="card-title">{{ question.title }}</h2>
-            <p class="card-text">{{ question.content }}</p>
+            <!-- <h2 class="card-title">{{ question.topic }}</h2> -->
+            <p class="card-text">{{ question.question }}</p>
             <small class="text-muted">Asked by {{ question.author.username }} on {{ question.created_at }}</small>
         </div>
     </div>
-
-    <h3>Answers</h3>
     {% if user.is_authenticated %}
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Submit Answer</button>
-        </form>
-    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit Answer</button>
+    </form>
+{% endif %} 
+    <br>
+     <br>
+    <h3>Answers</h3>
+   
 
     {% for answer in answers %}
         <div class="card mb-3">
@@ -41,4 +43,9 @@
             </div>
         </div>
     {% endfor %}
+    {% if not user.is_authenticated %}
+    You have to login to answer the question
+    {% endif %}
+
+    
 {% endblock %} 

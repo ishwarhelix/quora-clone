@@ -8,16 +8,19 @@
             <small class="text-muted">Asked by {{ question.author.username }} on {{ question.created_at }}</small>
         </div>
     </div>
+    
     {% if not user.is_authenticated %}
     You have to login to answer the question
     {% endif %}
     {% if user.is_authenticated %}
+    {% if not question.author == user %}
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Submit Answer</button>
     </form>
-{% endif %} 
+    {% endif %}
+    {% endif %} 
     <br>
      <br>
     <h3>Answers</h3>

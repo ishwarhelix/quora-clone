@@ -1,6 +1,9 @@
 {% extends 'questions/base.html' %}
 
 {% block content %}
+{% if not questions %}
+<h3>You have not asked any question till date</h3>
+{% endif %}
 {% for question in questions %}
         <div class="card mb-3">
             <div class="card-body">

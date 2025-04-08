@@ -16,8 +16,17 @@
     {% if not question.author == user %}
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Submit Answer</button>
+        <div class="form-group">
+            {{ form.answer.label_tag }}
+            <textarea name="answer" id="id_answer" class="form-control rounded-3" style="min-height: 120px; border-radius: 8px; resize: vertical; padding: 10px; font-size: 16px;">{% if form.answer.value %}{{ form.answer.value }}{% endif %}</textarea>
+            <style>
+                textarea:focus {
+                    border-color: #80bdff;
+                    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+                }
+            </style>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Submit Answer</button>
     </form>
     {% else %}
       You are not allowed to give answer to the  questions posted by you.

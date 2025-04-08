@@ -37,6 +37,11 @@
                 <small class="text-muted">
                     Answered by {{ answer.author.username }} on {{ answer.created_at }}
                 </small>
+                <div class="mt-2">
+                    <small class="text-muted">
+                        <i class="fas fa-heart text-danger"></i> {{ answer.likes.count }} likes
+                    </small>
+                </div>
                 {% if user.is_authenticated %}
                     {% if user == answer.author %}
                         <a href="{% url 'edit_answer' answer.id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
@@ -49,7 +54,6 @@
                             {% else %}
                                 Like
                             {% endif %}
-                            ({{ answer.likes.count }})
                         </button>
                     </form>
                 {% endif %}

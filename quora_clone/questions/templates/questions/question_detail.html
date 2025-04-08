@@ -13,7 +13,6 @@
     You have to login to answer the question
     {% endif %}
     {% if user.is_authenticated %}
-    {% if not question.author == user %}
     <form method="post">
         {% csrf_token %}
         <div class="form-group">
@@ -28,12 +27,9 @@
         </div>
         <button type="submit" class="btn btn-primary mt-2">Submit Answer</button>
     </form>
-    {% else %}
-      You are not allowed to give answer to the  questions posted by you.
-    {% endif %}
     {% endif %} 
     <br>
-     <br>
+    <br>
     <h3>Answers</h3>
     {% if not answers %}
     There are currently no answers for the above question .

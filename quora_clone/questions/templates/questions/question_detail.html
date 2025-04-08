@@ -43,7 +43,7 @@
                     {% endif %}
                     <form action="{% url 'like_answer' answer.id %}" method="post" class="d-inline">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-sm btn-outline-primary">
+                        <button type="submit" class="btn btn-sm {% if user in answer.likes.all %}btn-primary{% else %}btn-outline-primary{% endif %}">
                             {% if user in answer.likes.all %}
                                 Unlike
                             {% else %}

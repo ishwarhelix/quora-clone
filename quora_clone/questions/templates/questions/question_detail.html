@@ -8,6 +8,9 @@
             <small class="text-muted">Asked by {{ question.author.username }} on {{ question.created_at }}</small>
         </div>
     </div>
+    {% if not user.is_authenticated %}
+    You have to login to answer the question
+    {% endif %}
     {% if user.is_authenticated %}
     <form method="post">
         {% csrf_token %}
@@ -18,7 +21,9 @@
     <br>
      <br>
     <h3>Answers</h3>
-   
+    {% if not answers %}
+    There are currently no answers for the above question .
+    {% endif %}
 
     {% for answer in answers %}
         <div class="card mb-3">
@@ -43,9 +48,7 @@
             </div>
         </div>
     {% endfor %}
-    {% if not user.is_authenticated %}
-    You have to login to answer the question
-    {% endif %}
+    
 
     
 {% endblock %} 

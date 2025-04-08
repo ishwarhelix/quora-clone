@@ -6,7 +6,12 @@
     
     {% if user.is_authenticated %}
             <a class="nav-link" href="{% url 'ask_question' %}"><button>Ask a Question</button></a>
-    {% endif %}
+            {% else %}
+            <a href="login"><button>Please login to ask questions</button></a>
+    
+            {% endif %}
+            <br>
+            <br>
     <h1>Recent Questions</h1>
     {% for question in questions %}
         <div class="card mb-3">

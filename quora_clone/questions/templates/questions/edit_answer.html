@@ -1,0 +1,16 @@
+{% extends 'questions/base.html' %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Edit Answer</h2>
+            <p class="text-muted">Question: {{ answer.question.question }}</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <a href="{% url 'question_detail' answer.question.pk %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+{% endblock %} 

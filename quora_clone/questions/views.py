@@ -50,3 +50,21 @@ def like_answer(request, answer_id):
 def myquestions(request):
     questions = Question.objects.filter(author =request.user).order_by('-created_at')
     return render(request, 'questions/my_questions.html', {'questions': questions})
+
+@login_required
+def edit_answer(request, answer_id):
+    answer = get_object_or_404(Answer, id=answer_id)
+    if answer.author != request.user:
+        messages.error(request, "You don't have permission to edit this answer.")
+        return redirect('question_detail', pk=answer.question.pk)
+    
+    if request.method == 'POST':
+        form = AnswerForm(request.POST, instance=answer)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your answer has been updated successfully.")
+            return redirect('question_detail', pk=answer.question.pk)
+    else:
+        form = AnswerForm(instance=answer)
+    
+    return render(request, 'questions/edit_answer.html', {'form': form, 'answer': answer})

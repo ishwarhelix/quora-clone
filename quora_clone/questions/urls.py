@@ -7,5 +7,5 @@ urlpatterns = [
     path('question/<int:pk>/', views.question_detail, name='question_detail'),
     path('like/<int:answer_id>/', views.like_answer, name='like_answer'),
     path('myquestions/', views.myquestions, name='my_questions'),
-
+    path('answer/<int:answer_id>/edit/', views.edit_answer, name='edit_answer'),
 ] 

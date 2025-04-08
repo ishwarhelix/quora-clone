@@ -4,7 +4,7 @@
     <div class="card mb-4">
         <div class="card-body">
             <!-- <h2 class="card-title">{{ question.topic }}</h2> -->
-            <p class="card-text">{{ question.question }}</p>
+            <p class="card-text">Question. {{ question.question }}</p>
             <small class="text-muted">Asked by {{ question.author.username }} on {{ question.created_at }}</small>
         </div>
     </div>
@@ -28,7 +28,7 @@
     {% for answer in answers %}
         <div class="card mb-3">
             <div class="card-body">
-                <p class="card-text">{{ answer.answer }}</p>
+                <p class="card-text">Ans. {{ answer.answer }}</p>
                 <small class="text-muted">
                     Answered by {{ answer.author.username }} on {{ answer.created_at }}
                 </small>

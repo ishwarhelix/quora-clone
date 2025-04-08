@@ -45,3 +45,8 @@ def like_answer(request, answer_id):
     else:
         answer.likes.add(request.user)
     return redirect('question_detail', pk=answer.question.pk) 
+
+@login_required
+def myquestions(request):
+    questions = Question.objects.filter(author =request.user).order_by('-created_at')
+    return render(request, 'questions/my_questions.html', {'questions': questions})

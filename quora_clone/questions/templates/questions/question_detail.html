@@ -23,7 +23,7 @@
     {% for answer in answers %}
         <div class="card mb-3">
             <div class="card-body">
-                <p class="card-text">{{ answer.content }}</p>
+                <p class="card-text">{{ answer.answer }}</p>
                 <small class="text-muted">
                     Answered by {{ answer.author.username }} on {{ answer.created_at }}
                 </small>

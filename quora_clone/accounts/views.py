@@ -14,3 +14,8 @@ def register(request):
     else:
         form = UserRegistrationForm()
     return render(request, 'accounts/register.html', {'form': form})
+
+"""
+new function needs to added here
+
+"""

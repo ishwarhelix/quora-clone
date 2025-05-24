@@ -14,3 +14,7 @@ def register(request):
     else:
         form = UserRegistrationForm()
     return render(request, 'accounts/register.html', {'form': form})
+"""
+there needs to be another view here for logging the user login activity
+right here
+"""

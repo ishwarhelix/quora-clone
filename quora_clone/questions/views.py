@@ -21,6 +21,7 @@ def ask_question(request):
         form = QuestionForm()
     return render(request, 'questions/ask_question.html', {'form': form})
 
+@login_required
 def question_detail(request, pk):
     question = get_object_or_404(Question, pk=pk)
     answers = question.answers.all().order_by('-created_at')

@@ -16,6 +16,7 @@ def register(request):
     return render(request, 'accounts/register.html', {'form': form})
 
 """
-new function needs to added here
-
+there needs to be another view here for logging the user login activity
+right here
 """
+
